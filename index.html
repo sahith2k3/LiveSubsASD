@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiveSUBS</title>
+  <script src="webcam.js" type="module"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    #sidebar {
+      width: 200px; /* Adjust the width as needed */
+      background-color: #f0f0f0;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+    #main {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .select-language {
+      margin-bottom: 20px;
+    }
+    .start-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .start-button:hover {
+      background-color: #0056b3;
+    }
+    #canvas-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #canvas {
+      width: 100%;
+      height: 100%;
+    }
+    #subtitles {
+      position: absolute;
+      color: #fff;
+      font-size: 24px;
+      top: 600px;
+      left: 450px;
+      background-color: #00000087;
+      max-width: 350px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <label> Speaker language  </label>
+    <select id="sl" class="select-language">
+      <option value="en">English</option>
+      <option value="te-IN">Telugu</option>
+      <option value="ta-IN">Tamil</option>
+      <option value="hi-IN">Hindi</option>
+      <option value="fr-FR">French</option>
+      <!-- Add more language options as needed -->
+    </select>
+
+    <label> Listener language  </label>
+    <select id="tl" class="select-language">
+      <option value="en">English</option>
+      <option value="te-IN">Telugu</option>
+      <option value="ta-IN">Tamil</option>
+      <option value="hi-IN">Hindi</option>
+      <option value="fr-FR">French</option>
+      <!-- Add more language options as needed -->
+    </select>
+
+    <button id="start-button" class="start-button">Start</button>
+  </div>
+
+  <div id="main">
+    <video id="video" playsinline class="video"></video>
+    <div id="canvas-container">
+      <canvas id="canvas" class="canvas"></canvas>
+    </div>
+    <div id="log" style="overflow-y: scroll; height: 16.5rem"></div>
+
+    <div id="subtitles"></div>
+  </div>
+
+  <!-- <script src="./webcam.js"></script> -->
+</body>
+</html>
